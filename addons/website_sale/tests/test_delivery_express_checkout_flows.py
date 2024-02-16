@@ -4,6 +4,7 @@ import json
 from uuid import uuid4
 from unittest.mock import Mock, patch
 from werkzeug import urls
+import logging
 
 from odoo import Command
 from odoo.http import root
@@ -12,6 +13,8 @@ from odoo.tests import tagged
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.addons.website_sale.controllers.delivery import WebsiteSaleDelivery as WebsiteSaleDeliveryController
 from odoo.addons.website_sale.controllers.main import WebsiteSale
+
+_logger = logging.getLogger(__name__)
 
 
 @tagged('post_install', '-at_install')
@@ -338,6 +341,7 @@ class TestWebsiteSaleDeliveryExpressCheckoutFlows(HttpCaseWithUserDemo):
                     'partial_shipping_address': dict(self.express_checkout_anonymized_demo_shipping_values)
                 }
             )
+            _logger.warning(self.sale_order.partner_shipping_id.name)
             self.assertEqual(self.sale_order.partner_shipping_id, self.user_demo.partner_id)
 
             # Will create a new partner because the complete shipping information are different than

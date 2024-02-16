@@ -3,6 +3,7 @@
 import json
 from uuid import uuid4
 from werkzeug import urls
+import logging
 
 from odoo import Command
 from odoo.http import root
@@ -11,6 +12,7 @@ from odoo.tests import tagged
 from odoo.addons.base.tests.common import HttpCaseWithUserDemo
 from odoo.addons.website_sale.controllers.main import WebsiteSale as WebsiteSaleController
 
+_logger = logging.getLogger(__name__)
 
 @tagged('at_install')
 class TestWebsiteSaleExpressCheckoutFlows(HttpCaseWithUserDemo):
@@ -99,6 +101,7 @@ class TestWebsiteSaleExpressCheckoutFlows(HttpCaseWithUserDemo):
         )
 
         self.assertEqual(self.sale_order.partner_id.id, self.user_demo.partner_id.id)
+        _logger.warning(self.sale_order.partner_invoice_id.name)
         self.assertEqual(self.sale_order.partner_invoice_id.id, self.user_demo.partner_id.id)
 
     def test_express_checkout_registered_user_existing_address(self):
