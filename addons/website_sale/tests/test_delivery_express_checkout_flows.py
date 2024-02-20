@@ -342,6 +342,7 @@ class TestWebsiteSaleDeliveryExpressCheckoutFlows(HttpCaseWithUserDemo):
                 }
             )
             _logger.warning(self.sale_order.partner_shipping_id.name)
+            _logger.warning(self.user_demo.partner_id.name)
             self.assertEqual(self.sale_order.partner_shipping_id, self.user_demo.partner_id)
 
             # Will create a new partner because the complete shipping information are different than

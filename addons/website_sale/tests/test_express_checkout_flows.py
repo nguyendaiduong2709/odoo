@@ -102,6 +102,7 @@ class TestWebsiteSaleExpressCheckoutFlows(HttpCaseWithUserDemo):
 
         self.assertEqual(self.sale_order.partner_id.id, self.user_demo.partner_id.id)
         _logger.warning(self.sale_order.partner_invoice_id.name)
+        _logger.warning(self.user_demo.partner_id.name)
         self.assertEqual(self.sale_order.partner_invoice_id.id, self.user_demo.partner_id.id)
 
     def test_express_checkout_registered_user_existing_address(self):
