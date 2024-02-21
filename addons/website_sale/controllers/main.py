@@ -1462,6 +1462,7 @@ class WebsiteSale(payment_portal.PaymentPortal):
         ], limit=1)
         state = request.env["res.country.state"].search([
             ('code', '=', address.pop('state', '')),
+            ('country_id', '=', country.id)
         ], limit=1)
         address.update(country_id=country, state_id=state)
 
