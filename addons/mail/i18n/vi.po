@@ -7888,6 +7888,12 @@ msgid "You are not allowed to upload an attachment here."
 msgstr "Bạn không có quyền tải lên file đính kèm ở đây."
 
 #. module: mail
+#: code:addons/mail/controllers/discuss.py:0
+#, python-format
+msgid "You are not allowed to upload attachment with extension %s here."
+msgstr "Bạn không có quyền tải lên file đính kèm có đuôi mở rộng loại %s ở đây."
+
+#. module: mail
 #. openerp-web
 #: code:addons/mail/static/src/models/discuss_sidebar_category_item/discuss_sidebar_category_item.js:0
 #, python-format
