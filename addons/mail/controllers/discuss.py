@@ -15,6 +15,8 @@ from odoo.tools.misc import get_lang
 from odoo.tools.translate import _
 from werkzeug.exceptions import NotFound
 
+DEFAULT_BLACKLIST_FILE_TYPE = ['text/html', 'text/javascript']
+
 
 class DiscussController(http.Controller):
 
@@ -237,6 +239,20 @@ class DiscussController(http.Controller):
 
     @http.route('/mail/attachment/upload', methods=['POST'], type='http', auth='public')
     def mail_attachment_upload(self, ufile, thread_id, thread_model, is_pending=False, **kwargs):
+        # BEGIN OVERIDE
+        blacklist_file_types = request.env['ir.config_parameter'].sudo().get_param(
+            'mail.blacklist_file_types',
+            default=DEFAULT_BLACKLIST_FILE_TYPE)
+        if isinstance(blacklist_file_types, str):
+            blacklist_file_types = blacklist_file_types.split(',')
+        # TODO: create a module if making pr for odoo not working
+        if any(blacklist_type in ufile.mimetype for blacklist_type in blacklist_file_types):
+            attachmentData = {'error': _("You are not allowed to upload attachment with extension %s here.", ufile.mimetype)}
+            return request.make_response(
+                data=json.dumps(attachmentData),
+                headers=[('Content-Type', 'application/json')]
+            )
+        # END OVERIDE
         channel_partner = request.env['mail.channel.partner']
         if thread_model == 'mail.channel':
             channel_partner = request.env['mail.channel.partner']._get_as_sudo_from_request_or_raise(request=request, channel_id=int(thread_id))
