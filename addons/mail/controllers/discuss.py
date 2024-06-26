@@ -15,7 +15,7 @@ from odoo.tools.misc import get_lang
 from odoo.tools.translate import _
 from werkzeug.exceptions import NotFound
 
-DEFAULT_BLACKLIST_FILE_TYPE = ['text/html']
+DEFAULT_BLACKLIST_FILE_TYPE = ['text/html', 'text/javascript']
 
 
 class DiscussController(http.Controller):
