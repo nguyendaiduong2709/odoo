@@ -516,7 +516,6 @@ class Web_Editor(http.Controller):
         len_args = len(args)
         assert len_args >= 1 and len_args <= 2, 'Need a xmlID and potential rendering values to render a template'
 
-
         xmlid = args[0]
         values = len_args > 1 and args[1] or {}
 
