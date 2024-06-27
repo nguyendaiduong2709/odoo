@@ -8,6 +8,7 @@ import unicodedata
 import werkzeug.exceptions
 import werkzeug.routing
 import werkzeug.urls
+import threading
 
 # optional python-slugify import (https://github.com/un33k/python-slugify)
 try:
@@ -572,19 +573,26 @@ class IrHttp(models.AbstractModel):
     @classmethod
     def _get_exception_code_values(cls, exception):
         """ Return a tuple with the error code following by the values matching the exception"""
+        test_mode = request.env.registry.in_test_mode() or getattr(threading.current_thread(), 'testing', False)
         code = 500  # default code
         values = dict(
             exception=exception,
             traceback=traceback.format_exc(),
         )
         if isinstance(exception, exceptions.UserError):
-            values['error_message'] = exception.args[0]
+            if test_mode:
+                values['error_message'] = exception.args[0]
+            else:
+                values['error_message'] = "Error, please view log file for more details"
             code = 400
             if isinstance(exception, exceptions.AccessError):
                 code = 403
 
         elif isinstance(exception, QWebException):
-            values.update(qweb_exception=exception)
+            if test_mode:
+                values.update(qweb_exception=exception)
+            else:
+                values['error_message'] = "Error, please view log file for more details"
 
             if isinstance(exception.error, exceptions.AccessError):
                 code = 403
@@ -596,6 +604,8 @@ class IrHttp(models.AbstractModel):
             status_message=werkzeug.http.HTTP_STATUS_CODES.get(code, ''),
             status_code=code,
         )
+        if not test_mode:
+            values['error_message'] = "Error, please view log file for more details"
 
         return (code, values)
 
