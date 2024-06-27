@@ -824,7 +824,8 @@ class Users(models.Model):
         _logger.info("Password change for '%s' (#%s) from %s", self.env.user.login, self.env.uid, ip)
 
         # use self.env.user here, because it has uid=SUPERUSER_ID
-        return self.env.user.write({'password': new_passwd})
+        self.env.user.write({'password': new_passwd})
+        return True
 
     def preference_save(self):
         return {
@@ -1597,6 +1598,19 @@ class CheckIdentity(models.TransientModel):
         method = getattr(self.env(context=ctx)[model].browse(ids), method)
         assert getattr(method, '__has_check_identity', False)
         return method()
+
+    def _read(self, fields):
+        res = super(CheckIdentity, self)._read(fields)
+        for field in fields:
+            if field == 'password':
+                for r in self:
+                    try:
+                        r._cache[field]
+                        r._cache[field] = '********'
+                    except Exception:
+                        # skip SpecialValue (e.g. for missing record or access right)
+                        continue
+        return res
 
 #----------------------------------------------------------
 # change password wizard
