@@ -516,13 +516,11 @@ class Web_Editor(http.Controller):
         len_args = len(args)
         assert len_args >= 1 and len_args <= 2, 'Need a xmlID and potential rendering values to render a template'
 
-        trusted_value_keys = ('debug',)
-
         xmlid = args[0]
         values = len_args > 1 and args[1] or {}
 
         View = request.env['ir.ui.view']
-        return View.render_public_asset(xmlid, {k: values[k] for k in values if k in trusted_value_keys})
+        return View.render_public_asset(xmlid)
 
     @http.route('/web_editor/modify_image/<model("ir.attachment"):attachment>', type="json", auth="user", website=True)
     def modify_image(self, attachment, res_model=None, res_id=None, name=None, data=None, original_id=None, mimetype=None):
