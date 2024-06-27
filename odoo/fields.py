@@ -1836,6 +1836,8 @@ class Html(_String):
     def convert_to_cache(self, value, record, validate=True):
         if value is None or value is False:
             return None
+        if validate and value and isinstance(value, str) and not value.startswith("<p"):
+            value = value.replace("<", "&lt;").replace("/>", "/&gt;")
         if validate and self.sanitize:
             return html_sanitize(
                 value, silent=True,
