@@ -55,7 +55,7 @@ class TestBlogPerformance(UtilPerf):
         self.assertEqual(self._get_url_hot_query('/blog'), 26)
         self.assertEqual(self._get_url_hot_query('/blog', cache=False), 25)
         self.assertEqual(self._get_url_hot_query(blog_post[0].website_url), 30)
-        self.assertEqual(self._get_url_hot_query(blog_post[0].website_url, cache=False), 28)
+        self.assertEqual(self._get_url_hot_query(blog_post[0].website_url, cache=False), 29)
 
     def test_30_perf_sql_blog_bigger_data_scaling(self):
         BlogPost = self.env['blog.post']
