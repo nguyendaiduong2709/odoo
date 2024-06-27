@@ -126,6 +126,11 @@ class RequestHandler(werkzeug.serving.WSGIRequestHandler):
         me = threading.current_thread()
         me.name = 'odoo.service.http.request.%s' % (me.ident,)
 
+    def send_header(self, keyword, value):
+        if keyword == 'Server':
+            return
+        return super(RequestHandler, self).send_header(keyword, value)
+
 
 class ThreadedWSGIServerReloadable(LoggingBaseWSGIServerMixIn, werkzeug.serving.ThreadedWSGIServer):
     """ werkzeug Threaded WSGI Server patched to allow reusing a listen socket
