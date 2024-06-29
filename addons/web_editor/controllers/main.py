@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
+import os
 import io
 import json
 import logging
@@ -513,6 +514,13 @@ class Web_Editor(http.Controller):
     def public_render_template(self, args):
         # args[0]: xml id of the template to render
         # args[1]: optional dict of rendering values, only trusted keys are supported
+        sid = request.httprequest.cookies.get('session_id')
+        if not sid:
+            raise Exception("No session id found")
+        if not http.root.session_store.is_valid_key(sid):
+            raise Exception("Invalid session id: ", sid)
+        if not os.path.isfile(http.root.session_store.get_session_filename(sid)):
+            raise Exception("No session id found")
         len_args = len(args)
         assert len_args >= 1 and len_args <= 2, 'Need a xmlID and potential rendering values to render a template'
 

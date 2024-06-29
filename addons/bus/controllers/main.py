@@ -1,8 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import json
+import os
 
-from odoo import exceptions, _
+from odoo import exceptions, _, http
 from odoo.http import Controller, request, route
 from odoo.addons.bus.models.bus import dispatch
 
@@ -22,6 +23,13 @@ class BusController(Controller):
 
     @route('/longpolling/poll', type="json", auth="public", cors="*")
     def poll(self, channels, last, options=None):
+        sid = request.httprequest.cookies.get('session_id')
+        if not sid:
+            raise Exception("No session id found")
+        if not http.root.session_store.is_valid_key(sid):
+            raise Exception("Invalid session id: ", sid)
+        if not os.path.isfile(http.root.session_store.get_session_filename(sid)):
+            raise Exception("No session id found")
         if options is None:
             options = {}
         if not dispatch:
