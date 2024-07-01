@@ -7,6 +7,7 @@ import json
 import logging
 import math
 import re
+import phonenumbers
 
 from werkzeug import urls
 
@@ -14,6 +15,7 @@ from odoo import fields as odoo_fields, http, tools, _, SUPERUSER_ID
 from odoo.exceptions import ValidationError, AccessError, MissingError, UserError, AccessDenied
 from odoo.http import content_disposition, Controller, request, route
 from odoo.tools import consteq
+from odoo.addons.phone_validation.tools import phone_validation
 
 # --------------------------------------------------
 # Misc tools
@@ -137,6 +139,8 @@ class CustomerPortal(Controller):
 
     MANDATORY_BILLING_FIELDS = ["name", "phone", "email", "street", "city", "country_id"]
     OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name"]
+    TO_VALIDATE_NUMBER_FIELDS = []
+    TO_VALIDATE_SPECIAL_CHARACTER_FIELDS = ["street", "city"]
 
     _items_per_page = 80
 
@@ -339,6 +343,19 @@ class CustomerPortal(Controller):
         error = dict()
         error_message = []
 
+        # number field validation
+        for field_name in self.TO_VALIDATE_NUMBER_FIELDS:
+            if data.get(field_name, False) and not re.search(r'\d', data.get(field_name)):
+                error[field_name] = 'error'
+                error_message.append(_('Number Character is a must on %s.') % field_name)
+
+        # Validation special character fields
+        for field_name in self.TO_VALIDATE_SPECIAL_CHARACTER_FIELDS:
+            # TODO: , and . is allowed perhaps ?
+            if data.get(field_name, False) and re.search(r'[!@#$%^&*()?":{}|<>]', data.get(field_name)):
+                error[field_name] = 'error'
+                error_message.append(_('Disallow special character on %s.') % field_name)
+
         # Validation
         for field_name in self.MANDATORY_BILLING_FIELDS:
             if not data.get(field_name):
@@ -367,6 +384,23 @@ class CustomerPortal(Controller):
                         error["vat"] = 'error'
             else:
                 error_message.append(_('Changing VAT number is not allowed once document(s) have been issued for your account. Please contact us directly for this operation.'))
+
+        if data.get('phone') and partner:
+            partner_dummy = partner.new({
+                'country_id': (int(data['country_id'])
+                if data.get('country_id') else partner.country_id.id),
+                })
+            try:
+                phone_validation.phone_format(
+                    data.get('phone'),
+                    partner_dummy.country_id.code or None,
+                    partner_dummy.country_id.phone_code or None,
+                    force_format='E164',
+                    raise_exception=True,
+                )
+            except (phonenumbers.phonenumberutil.NumberParseException, UserError):
+                error["phone"] = 'error'
+                error_message.append(_('Invalid Phone number! Please enter a valid phone number.'))
 
         # error message for empty required fields
         if [err for err in error.values() if err == 'missing']:
