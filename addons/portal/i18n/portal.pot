@@ -433,6 +433,12 @@ msgid "Developer API Keys"
 msgstr ""
 
 #. module: portal
+#: code:addons/portal/controllers/portal.py:0
+#, python-format
+msgid "Disallow special character on %s."
+msgstr ""
+
+#. module: portal
 #. openerp-web
 #: code:addons/portal/static/src/js/portal.js:0
 #, python-format
@@ -574,6 +580,12 @@ msgstr ""
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
 #, python-format
+msgid "Invalid Phone number! Please enter a valid phone number."
+msgstr ""
+
+#. module: portal
+#: code:addons/portal/controllers/portal.py:0
+#, python-format
 msgid "Invalid report type: %s"
 msgstr ""
 
@@ -704,6 +716,12 @@ msgstr ""
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__note
 msgid "Note"
+msgstr ""
+
+#. module: portal
+#: code:addons/portal/controllers/portal.py:0
+#, python-format
+msgid "Number Character is a must on %s."
 msgstr ""
 
 #. module: portal

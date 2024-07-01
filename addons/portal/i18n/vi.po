@@ -463,6 +463,12 @@ msgid "Developer API Keys"
 msgstr "Developer API Keys"
 
 #. module: portal
+#: code:addons/portal/controllers/portal.py:0
+#, python-format
+msgid "Disallow special character on %s."
+msgstr "Không được phép có ký tự đặc biệt ở %s"
+
+#. module: portal
 #. openerp-web
 #: code:addons/portal/static/src/js/portal.js:0
 #, python-format
@@ -606,6 +612,12 @@ msgstr "Email không hợp lệ! Vui lòng điền một email hợp lệ."
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
 #, python-format
+msgid "Invalid Phone number! Please enter a valid phone number."
+msgstr "Số điện thoại không hợp lệ! hãy nhập vào một số hợp lệ"
+
+#. module: portal
+#: code:addons/portal/controllers/portal.py:0
+#, python-format
 msgid "Invalid report type: %s"
 msgstr "Kiểu báo cáo không hợp lệ: %s"
 
@@ -741,6 +753,12 @@ msgstr "Tiếp"
 #: model:ir.model.fields,field_description:portal.field_portal_share__note
 msgid "Note"
 msgstr "Ghi chú"
+
+#. module: portal
+#: code:addons/portal/controllers/portal.py:0
+#, python-format
+msgid "Number Character is a must on %s."
+msgstr "Cần phải là các ký tự số ở %s."
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_record_sidebar
