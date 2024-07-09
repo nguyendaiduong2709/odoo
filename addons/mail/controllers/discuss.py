@@ -17,10 +17,7 @@ from odoo.tools.mimetypes import get_extension
 from werkzeug.exceptions import NotFound
 
 DEFAULT_WHITELIST_FILE_TYPE = [
-    '.docs', '.pdf', '.png', '.jepg', '.webp', '.txt', '.csv', '.doc',
-    '.pot', '.potm', '.potx', '.ppam', '.pps', '.ppsm', '.ppsx', '.ppt', '.pptm', '.pptx',
-    '.xml', '.zip', '.xla', '.xlam', '.xll', '.xlm', '.xls', '.xlsb', '.xslm', '.xlsx', '.xlt', '.xltm', '.xltx', '.xlw',
-    '.mp3', '.mp4'
+    '.doc', '.docx', '.docs', '.pdf', '.png', '.jepg', '.webp', '.txt', '.csv', '.ppt', '.pptx', '.xml', '.xls', '.xlsx', '.mp3', '.mp4'
 ]
 
 
