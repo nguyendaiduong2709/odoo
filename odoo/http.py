@@ -641,9 +641,13 @@ class JsonRequest(WebRequest):
             response['error'] = error
         if result is not None:
             if isinstance(result, list):
+                has_password = False
                 for res in result:
                     if 'password' in res:
                         res["password"] = "*****"
+                        has_password = True
+                if has_password:
+                    result.pop("password")
             response['result'] = result
 
         mime = 'application/json'
