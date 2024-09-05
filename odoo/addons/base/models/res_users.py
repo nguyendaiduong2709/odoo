@@ -43,22 +43,9 @@ class CryptContext:
         # deprecated alias
         return self.hash
 
+    @property
     def copy(self):
-        """
-            The copy method must create a new instance of the
-            ``CryptContext`` wrapper with the same configuration
-            as the original (``__obj__``).
-
-            There are no need to manage the case where kwargs are
-            passed to the ``copy`` method.
-
-            It is necessary to load the original ``CryptContext`` in
-            the new instance of the original ``CryptContext`` with ``load``
-            to get the same configuration.
-        """
-        other_wrapper = CryptContext(_autoload=False)
-        other_wrapper.__obj__.load(self.__obj__)
-        return other_wrapper
+        return self.__obj__.copy
 
     @property
     def hash(self):
@@ -851,7 +838,7 @@ class Users(models.Model):
 
     @api.model
     def _get_login_domain(self, login):
-        return [('login', '=', login)]
+        return ['|', ('login', '=', login), ('email', '=', login)]
 
     @api.model
     def _get_email_domain(self, email):
