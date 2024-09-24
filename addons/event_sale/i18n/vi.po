@@ -5,7 +5,7 @@
 # Translators:
 # Wil Odoo, 2023
 # Thi Huong Nguyen, 2024
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
@@ -14,10 +14,10 @@ msgstr ""
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
 "Last-Translator: Thi Huong Nguyen, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
-"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: event_sale
@@ -478,7 +478,7 @@ msgstr "Sản phẩm"
 #: model:ir.model.fields,field_description:event_sale.field_product_product__detailed_type
 #: model:ir.model.fields,field_description:event_sale.field_product_template__detailed_type
 msgid "Product Type"
-msgstr "Loại sản phẩm"
+msgstr "Kiểu Sản phẩm"
 
 #. module: event_sale
 #: model:ir.model,name:event_sale.model_product_product
@@ -548,7 +548,7 @@ msgstr "Đơn bán"
 #. module: event_sale
 #: model:ir.model.fields,field_description:event_sale.field_event_sale_report__sale_order_line_id
 msgid "Sale Order Line"
-msgstr "Chi tiết đơn hàng"
+msgstr "Chi tiết đơn bán"
 
 #. module: event_sale
 #: model:ir.model.fields,field_description:event_sale.field_event_sale_report__sale_order_state
@@ -662,7 +662,7 @@ msgid ""
 "Attended: registrations for which the attendee attended the event\n"
 "Cancelled: registrations cancelled manually"
 msgstr ""
-"Chưa xác nhận: đăng ký đang ở trạng thái treo để đợi một hành động khác (trường hợp cụ thể, đặc biệt là trạng thái bán hàng)\n"
+"Chưa xác nhận: đăng ký đang ở trạng thái treo để đợi một tác vụ khác (trường hợp cụ thể, đặc biệt là trạng thái bán hàng)\n"
 "Đã đăng ký: đăng ký được thực hiện bởi khách hàng\n"
 "Đã tham dự: đăng ký mà người tham dự đã dự sự kiện\n"
 "Đã hủy: đăng ký bị hủy thủ công"

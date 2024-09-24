@@ -6,19 +6,19 @@
 # Martin Trigaux, 2023
 # Wil Odoo, 2024
 # Thi Huong Nguyen, 2024
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 12:31+0000\n"
+"POT-Creation-Date: 2024-08-13 10:26+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
 "Last-Translator: Thi Huong Nguyen, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
-"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: calendar
@@ -271,7 +271,7 @@ msgstr ""
 "                <t t-if=\"object.event_id.videocall_location\">\n"
 "                    <li>\n"
 "                        Cách tham gia:\n"
-"                        <t t-if=\"object.get_base_url() in object.event_id.videocall_location\"> Tham gia bằng Odoo Thảo luận</t>\n"
+"                        <t t-if=\"object.get_base_url() in object.event_id.videocall_location\"> Tham gia bằng ứng dụng Thảo luận</t>\n"
 "                        <t t-else=\"\"> Tham gia tại</t><br>\n"
 "                        <a t-att-href=\"object.event_id.videocall_location\" target=\"_blank\" t-out=\"object.event_id.videocall_location or ''\">www.mycompany.com/calendar/join_videocall/xyz</a>\n"
 "                    </li>\n"
@@ -949,7 +949,7 @@ msgstr "Số lượt chấp nhận"
 #. module: calendar
 #: model:ir.model.fields,field_description:calendar.field_mail_activity_type__category
 msgid "Action"
-msgstr "Hành động"
+msgstr "Tác vụ"
 
 #. module: calendar
 #: model:ir.model.fields,field_description:calendar.field_calendar_event__message_needaction
@@ -1381,13 +1381,13 @@ msgstr "Ngày"
 #. module: calendar
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_form
 msgid "Day of Month"
-msgstr "Ngày trong Tháng"
+msgstr "Thứ trong tháng"
 
 #. module: calendar
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__month_by__day
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_recurrence__month_by__day
 msgid "Day of month"
-msgstr "Ngày trong tháng"
+msgstr "Thứ trong tháng"
 
 #. module: calendar
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_alarm__interval__days
@@ -1720,7 +1720,7 @@ msgstr "Phản hồi: %(feedback)s"
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__byday__1
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_recurrence__byday__1
 msgid "First"
-msgstr "Đầu tiên"
+msgstr "Tuần đầu tiên"
 
 #. module: calendar
 #. odoo-python
@@ -1754,7 +1754,7 @@ msgstr "Mãi mãi"
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__byday__4
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_recurrence__byday__4
 msgid "Fourth"
-msgstr "Thứ tư"
+msgstr "Tuần thứ tư"
 
 #. module: calendar
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_search
@@ -1935,7 +1935,7 @@ msgstr "Tham gia Cuộc gọi Video"
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__byday__-1
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_recurrence__byday__-1
 msgid "Last"
-msgstr "Gần nhất"
+msgstr "Tuần cuối cùng"
 
 #. module: calendar
 #: model:ir.model.fields,field_description:calendar.field_calendar_alarm__write_uid
@@ -2128,7 +2128,7 @@ msgstr "Tên"
 #. module: calendar
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_attendee__state__needsaction
 msgid "Needs Action"
-msgstr "Cần có Hành động"
+msgstr "Cần có Tác vụ"
 
 #. module: calendar
 #. odoo-javascript
@@ -2432,7 +2432,7 @@ msgstr "Lặp lại x lần"
 #: code:addons/calendar/static/src/activity/activity_patch.xml:0
 #, python-format
 msgid "Reschedule"
-msgstr "Đặt lại lịch trình"
+msgstr "Đặt lại lịch"
 
 #. module: calendar
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_search
@@ -2473,7 +2473,7 @@ msgstr "Lên lịch trình bởi"
 msgid ""
 "Scheduling an activity using the calendar is not possible on more than one "
 "record."
-msgstr "Không thể lên lịch hoạt động bằng lịch trên nhiều tập dữ liệu."
+msgstr "Không thể lên lịch hoạt động bằng lịch trên nhiều bản ghi."
 
 #. module: calendar
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_search
@@ -2484,7 +2484,7 @@ msgstr "Tìm kiếm Cuộc gặp"
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__byday__2
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_recurrence__byday__2
 msgid "Second"
-msgstr "Giây"
+msgstr "Tuần thứ hai"
 
 #. module: calendar
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_form
@@ -2698,7 +2698,7 @@ msgstr "Những sự kiện này không có người tham dự"
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__byday__3
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_recurrence__byday__3
 msgid "Third"
-msgstr "Thứ 3"
+msgstr "Tuần thứ ba"
 
 #. module: calendar
 #. odoo-javascript
@@ -2908,7 +2908,7 @@ msgstr "Bạn phải chọn ít nhất một ngày trong tuần"
 #: code:addons/calendar/static/src/views/attendee_calendar/common/attendee_calendar_common_renderer.xml:0
 #, python-format
 msgid "You're alone in this meeting"
-msgstr "Chỉ có một mình bạn trong cuộc họp này"
+msgstr "Chỉ có mình bạn trong cuộc họp này"
 
 #. module: calendar
 #. odoo-javascript
@@ -2961,7 +2961,7 @@ msgstr "không,"
 #: code:addons/calendar/static/src/views/fields/many2many_attendee.xml:0
 #, python-format
 msgid "props.placeholder"
-msgstr ""
+msgstr "props.placeholder"
 
 #. module: calendar
 #. odoo-javascript

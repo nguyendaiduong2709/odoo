@@ -14,10 +14,10 @@ msgstr ""
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
 "Last-Translator: Thi Huong Nguyen, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
-"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: pos_sale
@@ -157,6 +157,13 @@ msgstr "Số tiền đến hạn thanh toán: %s"
 #, python-format
 msgid "E.g. customer: Steward, date: 2020-05-09"
 msgstr "VD: khách hàng: Steward, ngày: 2020-05-09"
+
+#. module: pos_sale
+#. odoo-javascript
+#: code:addons/pos_sale/static/src/app/order_management_screen/sale_order_management_screen/sale_order_management_screen.js:0
+#, python-format
+msgid "Error amount too high"
+msgstr "Số tiền lỗi quá cao"
 
 #. module: pos_sale
 #. odoo-javascript

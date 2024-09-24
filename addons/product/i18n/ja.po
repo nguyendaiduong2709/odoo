@@ -71,7 +71,7 @@ msgstr ""
 #: code:addons/product/models/product_pricelist_item.py:0
 #, python-format
 msgid "%(percentage)s %% discount and %(price)s surcharge"
-msgstr "%(percentage)s %% ディスカウントおよび %(price)s 追加料金"
+msgstr "%(percentage)s %% 値引および %(price)s 追加料金"
 
 #. module: product
 #. odoo-python
@@ -427,7 +427,7 @@ msgstr "高度な価格表"
 #. module: product
 #: model:ir.model.fields.selection,name:product.selection__res_config_settings__product_pricelist_setting__advanced
 msgid "Advanced price rules (discounts, formulas)"
-msgstr "高度な価格ルール (値引、数式)"
+msgstr "高度な価格規則 (値引、数式)"
 
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_product__all_product_tag_ids

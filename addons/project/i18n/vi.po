@@ -6,19 +6,19 @@
 # Martin Trigaux, 2023
 # Wil Odoo, 2024
 # Thi Huong Nguyen, 2024
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-29 10:44+0000\n"
+"POT-Creation-Date: 2024-08-13 10:26+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
 "Last-Translator: Thi Huong Nguyen, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
-"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project
@@ -533,7 +533,7 @@ msgstr "<span class=\"o_stat_text\">Đánh giá cuối cùng</span>"
 #: model_terms:ir.ui.view,arch_db:project.project_sharing_project_task_view_form
 #: model_terms:ir.ui.view,arch_db:project.view_task_form2
 msgid "<span class=\"o_stat_text\">Parent Task</span>"
-msgstr "<span class=\"o_stat_text\">Nhiệm vụ cha</span>"
+msgstr "<span class=\"o_stat_text\">Nhiệm vụ chính</span>"
 
 #. module: project
 #: model_terms:ir.ui.view,arch_db:project.edit_project
@@ -627,7 +627,7 @@ msgstr ""
 #. module: project
 #: model:ir.model.constraint,message:project.constraint_project_task_private_task_has_no_parent
 msgid "A private task cannot have a parent."
-msgstr "Một nhiệm vụ riêng tư không thể có nhiệm vụ cha."
+msgstr "Một nhiệm vụ riêng tư không thể có nhiệm vụ chính."
 
 #. module: project
 #: model:ir.model.constraint,message:project.constraint_project_task_recurring_task_has_no_parent
@@ -858,6 +858,7 @@ msgid "Allocated Time"
 msgstr "Thời gian được phân bổ"
 
 #. module: project
+#: model_terms:ir.ui.view,arch_db:project.portal_my_task
 #: model_terms:ir.ui.view,arch_db:project.portal_my_task_allocated_hours_template
 msgid "Allocated Time:"
 msgstr "Thời gian đã phân bổ:"
@@ -1017,8 +1018,6 @@ msgid "Assigned to"
 msgstr "Phân công cho"
 
 #. module: project
-#. odoo-python
-#: code:addons/project/controllers/portal.py:0
 #: model:ir.model.fields,field_description:project.field_project_task__user_ids
 #: model:ir.model.fields,field_description:project.field_project_task_burndown_chart_report__user_ids
 #: model:ir.model.fields,field_description:project.field_report_project_task_user__user_ids
@@ -1026,7 +1025,6 @@ msgstr "Phân công cho"
 #: model_terms:ir.ui.view,arch_db:project.project_sharing_project_task_view_form
 #: model_terms:ir.ui.view,arch_db:project.project_sharing_project_task_view_tree
 #: model_terms:ir.ui.view,arch_db:project.view_task_search_form_base
-#, python-format
 msgid "Assignees"
 msgstr "Người được Phân công"
 
@@ -1418,7 +1416,7 @@ msgstr "Xác nhận"
 #, python-format
 msgid "Congratulations, you are now a master of project management."
 msgstr ""
-"Xin chúc mừng! Giờ đây bạn đã trở thành một bậc thầy về quản lý dự án."
+"Xin chúc mừng, giờ đây bạn giống như một bậc thầy trong quản lý dự án."
 
 #. module: project
 #. odoo-javascript
@@ -2067,6 +2065,11 @@ msgid "Email cc"
 msgstr "Email CC"
 
 #. module: project
+#: model:ir.model.fields,help:project.field_project_project__alias_domain
+msgid "Email domain e.g. 'example.com' in 'odoo@example.com'"
+msgstr "Ví dụ miền email 'example.com' trong 'odoo@example.com'"
+
+#. module: project
 #: model_terms:digest.tip,tip_description:project.digest_tip_project_1
 msgid "Emails sent to"
 msgstr "Email gửi tới"
@@ -2575,7 +2578,7 @@ msgstr "Đã xuất hóa đơn"
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_milestone__is_deadline_exceeded
 msgid "Is Deadline Exceeded"
-msgstr "Là Đã quá Hạn"
+msgstr "Đã quá Hạn"
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_milestone__is_deadline_future
@@ -2817,7 +2820,7 @@ msgstr "Thiết kế Logo"
 #: code:addons/project/static/src/xml/project_task_kanban_examples.xml:0
 #, python-format
 msgid "Look for the"
-msgstr "Tìm kiếm"
+msgstr "Tìm kiếm biểu tượng"
 
 #. module: project
 #: model:ir.model.fields.selection,name:project.selection__project_task__priority__0
@@ -3197,7 +3200,7 @@ msgstr "Chưa có dữ liệu nào!"
 #: model_terms:ir.actions.act_window,help:project.open_view_project_all_config_group_stage
 #: model_terms:ir.actions.act_window,help:project.open_view_project_all_group_stage
 msgid "No projects found. Let's create one!"
-msgstr "Không tìm thấy dự án nào. Hãy tạo một dự án!"
+msgstr "Không tìm thấy dự án nào. Hãy tạo một cái!"
 
 #. module: project
 #: model_terms:ir.actions.act_window,help:project.open_task_type_form
@@ -3208,7 +3211,7 @@ msgstr "Không tìm thấy giai đoạn nào. Hãy tạo một giai đoạn!"
 #. module: project
 #: model_terms:ir.actions.act_window,help:project.project_tags_action
 msgid "No tags found. Let's create one!"
-msgstr "Không tìm thấy thẻ nào. Hãy tạo mới!"
+msgstr "Không tìm thấy thẻ. Hãy tạo một cái!"
 
 #. module: project
 #: model_terms:ir.actions.act_window,help:project.act_project_project_2_project_task_all
@@ -3333,11 +3336,18 @@ msgid "Once a Month"
 msgstr "Mỗi tháng Một lần"
 
 #. module: project
+#. odoo-python
+#: code:addons/project/controllers/portal.py:0
+#, python-format
+msgid "Only jpeg, png, bmp and tiff images are allowed as attachments."
+msgstr "Chỉ cho phép dùng hình ảnh jpeg, png, bmp và tiff làm tệp đính kèm."
+
+#. module: project
 #. odoo-javascript
 #: code:addons/project/static/src/project_sharing/components/chatter/chatter_composer.xml:0
 #, python-format
 msgid "Oops! Something went wrong. Try to reload the page and log in."
-msgstr "Ôi! Đã xảy ra lỗi. Hãy thử tải lại trang và đăng nhập lại."
+msgstr "Rất tiết! Một vài thứ bị sai. Hãy thử tải lại trang và đăng nhập lại."
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_project__open_task_count
@@ -4184,6 +4194,20 @@ msgstr "Mặt buồn"
 
 #. module: project
 #. odoo-javascript
+#: code:addons/project/static/src/project_sharing/views/form/project_sharing_form_controller.js:0
+#, python-format
+msgid "Save the task to be able to drag images in description"
+msgstr "Lưu nhiệm vụ để có thể kéo hình ảnh vào phần mô tả"
+
+#. module: project
+#. odoo-javascript
+#: code:addons/project/static/src/project_sharing/views/form/project_sharing_form_controller.js:0
+#, python-format
+msgid "Save the task to be able to paste images in description"
+msgstr "Lưu nhiệm vụ để có thể dán hình ảnh vào phần mô tả"
+
+#. module: project
+#. odoo-javascript
 #: code:addons/project/static/src/js/tours/project.js:0
 #, python-format
 msgid "Schedule your activity once it is ready."
@@ -4797,6 +4821,7 @@ msgstr "Nhiệm vụ: Yêu cầu đánh giá"
 #. odoo-python
 #: code:addons/project/models/project_project.py:0
 #: code:addons/project/models/project_project.py:0
+#: code:addons/project/models/project_project.py:0
 #: model:ir.actions.act_window,name:project.act_project_project_2_project_task_all
 #: model:ir.actions.act_window,name:project.action_view_task
 #: model:ir.actions.act_window,name:project.action_view_task_from_milestone
@@ -4883,6 +4908,15 @@ msgstr "Giai đoạn cá nhân của người dùng hiện tại."
 #: model:ir.model.fields,help:project.field_project_task__personal_stage_type_id
 msgid "The current user's personal task stage."
 msgstr "Giai đoạn nhiệm vụ cá nhân của người dùng hiện tại."
+
+#. module: project
+#. odoo-python
+#: code:addons/project/controllers/portal.py:0
+#, python-format
+msgid ""
+"The document does not exist or you do not have the rights to access it."
+msgstr ""
+"Tài liệu không tồn tại hoặc bạn không có quyền truy cập vào tài liệu đó."
 
 #. module: project
 #. odoo-python
@@ -5082,7 +5116,7 @@ msgid ""
 msgstr ""
 "Dự án này được liên kết với %s, trong khi giai đoạn đã chọn thuộc về %s. Bạn"
 " có thể cân nhắc một số lựa chọn sau: xóa công ty khỏi dự án hoặc giai đoạn."
-" Ngoài ra, bạn có thể cập nhật thông tin công ty cho các tập dữ liệu này để "
+" Ngoài ra, bạn có thể cập nhật thông tin công ty cho các bản ghi này để "
 "chúng thuộc về cùng một công ty."
 
 #. module: project
@@ -5435,7 +5469,7 @@ msgstr "Dùng thẻ để phân loại nhiệm vụ."
 #: code:addons/project/static/src/xml/project_task_kanban_examples.xml:0
 #, python-format
 msgid "Use the"
-msgstr "Sử dụng"
+msgstr "Sử dụng biểu tượng"
 
 #. module: project
 #. odoo-javascript
@@ -5885,7 +5919,7 @@ msgstr "VD: Ra mắt sản phẩm"
 #: code:addons/project/static/src/xml/project_task_kanban_examples.xml:0
 #, python-format
 msgid "icon to organize your daily activities."
-msgstr "biểu tượng để sắp xếp hoạt động hàng ngày của bạn."
+msgstr "để sắp xếp hoạt động hàng ngày của bạn."
 
 #. module: project
 #. odoo-javascript
@@ -5895,7 +5929,7 @@ msgid ""
 "icon to see tasks waiting on other ones. Once a task is marked as complete "
 "or canceled, all of its dependencies will be unblocked."
 msgstr ""
-"biểu tượng để xem các nhiệm vụ đang chờ những nhiệm vụ khác. Khi một nhiệm "
+"để xem các nhiệm vụ đang chờ những nhiệm vụ khác. Khi một nhiệm "
 "vụ được đánh dấu là hoàn thành hoặc bị hủy, tất cả thành phần phụ thuộc của "
 "nhiệm vụ đó sẽ được bỏ chặn."
 
@@ -5904,7 +5938,7 @@ msgstr ""
 #: code:addons/project/static/src/xml/project_task_kanban_examples.xml:0
 #, python-format
 msgid "icon."
-msgstr "biểu tượng."
+msgstr "."
 
 #. module: project
 #. odoo-javascript
@@ -5970,6 +6004,13 @@ msgstr "trạng thái để đánh dấu nhiệm vụ là hoàn thành."
 
 #. module: project
 #. odoo-javascript
+#: code:addons/project/static/src/project_sharing/components/chatter/chatter_composer.xml:0
+#, python-format
+msgid "state.message"
+msgstr "state.message"
+
+#. module: project
+#. odoo-javascript
 #: code:addons/project/static/src/components/project_task_name_with_subtask_count_char_field/project_task_name_with_subtask_count_char_field.xml:0
 #, python-format
 msgid "sub-tasks)"
@@ -6029,8 +6070,12 @@ msgstr "sẽ tạo ra các nhiệm vụ trong"
 
 #. module: project
 #: model:mail.template,subject:project.rating_project_request_email_template
-msgid "{{ object.project_id.company_id.name }}: Satisfaction Survey"
-msgstr "{{ object.project_id.company_id.name }}: Khảo sát độ hài lòng"
+msgid ""
+"{{ object.project_id.company_id.name or user.env.company.name }}: "
+"Satisfaction Survey"
+msgstr ""
+"{{ object.project_id.company_id.name or user.env.company.name }}: Khảo sát "
+"mức độ hài lòng"
 
 #. module: project
 #: model_terms:ir.ui.view,arch_db:project.view_task_kanban

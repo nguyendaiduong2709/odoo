@@ -141,7 +141,7 @@ class AccountChartTemplate(models.AbstractModel):
         :type install_demo: bool
         """
         if not company:
-            company = self.env.company
+            return
         if isinstance(company, int):
             company = self.env['res.company'].browse([company])
 
@@ -165,7 +165,11 @@ class AccountChartTemplate(models.AbstractModel):
         if not self.env.is_system():
             raise AccessError(_("Only administrators can install chart templates"))
 
-        module_name = self._get_chart_template_mapping()[template_code].get('module')
+        chart_template_mapping = self._get_chart_template_mapping()[template_code]
+        if not company.country_id:
+            company.country_id = chart_template_mapping.get('country_id')
+
+        module_name = chart_template_mapping.get('module')
         module = self.env['ir.module.module'].search([('name', '=', module_name), ('state', '=', 'uninstalled')])
         if module:
             module.button_immediate_install()
@@ -210,22 +214,28 @@ class AccountChartTemplate(models.AbstractModel):
 
         # Manual sync because disable above (delay_account_group_sync)
         AccountGroup = self.env['account.group'].with_context(delay_account_group_sync=False)
-        AccountGroup._adapt_accounts_for_account_groups(self.env['account.account'].search([]))
-        AccountGroup.search([])._adapt_parent_account_group()
+        AccountGroup._adapt_accounts_for_account_groups(company=company)
+        AccountGroup._adapt_parent_account_group(company=company)
 
         # Install the demo data when the first localization is instanciated on the company
         if install_demo and self.ref('base.module_account').demo and not reload_template:
             try:
                 with self.env.cr.savepoint():
                     self = self.with_context(lang=original_context_lang)
-                    company = company.with_env(self.env)
-                    self.sudo()._load_data(self._get_demo_data(company))
-                    self._post_load_demo_data(company)
+                    self._install_demo(company.with_env(self.env))
             except Exception:
                 # Do not rollback installation of CoA if demo data failed
                 _logger.exception('Error while loading accounting demo data')
         for subsidiary in company.child_ids:
             self._load(template_code, subsidiary, install_demo)
+
+    @api.model
+    def _install_demo(self, companies):
+        if not isinstance(companies, models.BaseModel):
+            companies = self.env['res.company'].browse(companies)
+        for company in companies:
+            self.sudo()._load_data(self._get_demo_data(company))
+            self._post_load_demo_data(company)
 
     def _pre_reload_data(self, company, template_data, data):
         """Pre-process the data in case of reloading the chart of accounts.
@@ -421,6 +431,9 @@ class AccountChartTemplate(models.AbstractModel):
                 vals['currency_id'] = fiscal_country.currency_id.id
         if not company.country_id:
             vals['country_id'] = fiscal_country.id
+
+        # Ensure that we write on 'anglo_saxon_accounting' when changing to a CoA that relies on the default of `False`.
+        vals.setdefault('anglo_saxon_accounting', False)
 
         # This write method is important because it's overridden and has additional triggers
         # e.g it activates the currency
@@ -626,6 +639,20 @@ class AccountChartTemplate(models.AbstractModel):
             company.account_purchase_tax_id = self.env['account.tax'].search([
                 *self.env['account.tax']._check_company_domain(company),
                 ('type_tax_use', 'in', ('purchase', 'all'))], limit=1).id
+        # Set default taxes on products (only on products having already a tax set in another company, as some flows require no tax at all (e.g TIPS in PoS))
+        # We need to browse the product in sudo to check for the taxes_id and supplier_taxes_id fields regardless of the companies record rules
+        # that would, otherwise, just look empty all the time for the current user/company
+        sudoed_products = self.env['product.template'].sudo().search(self.env['product.template']._check_company_domain(company))
+
+        if company.account_sale_tax_id:
+            sudoed_products_sale = sudoed_products.filtered(
+                lambda p: p.taxes_id and not p.taxes_id.filtered_domain(p.taxes_id._check_company_domain(company)))
+            sudoed_products_sale._force_default_sale_tax(company)
+        if company.account_purchase_tax_id:
+            sudoed_products_purchase = sudoed_products.filtered(
+                lambda p: p.supplier_taxes_id and not p.supplier_taxes_id.filtered_domain(p.taxes_id._check_company_domain(company)))
+            sudoed_products_purchase._force_default_purchase_tax(company)
+
         # Display caba fields if there are caba taxes
         if not company.parent_id and self.env['account.tax'].search([('tax_exigibility', '=', 'on_payment')]):
             company.tax_exigibility = True
@@ -1041,7 +1068,7 @@ class AccountChartTemplate(models.AbstractModel):
         return parents
 
     def _get_tag_mapper(self, template_code):
-        tags = {x.name: x.id for x in self.env['account.account.tag'].with_context(active_test=False).search([
+        tags = {x.name: x.id for x in self.env['account.account.tag'].with_context(active_test=False, lang='en_US').search([
             ('applicability', '=', 'taxes'),
             ('country_id', '=', self._get_chart_template_mapping()[template_code]['country_id']),
         ])}

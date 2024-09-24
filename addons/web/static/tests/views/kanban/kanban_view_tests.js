@@ -4981,6 +4981,33 @@ QUnit.module("Views", (hooks) => {
         assert.deepEqual(allNames, ["hello", "", "xmo", ""]);
     });
 
+    QUnit.test("drag and drop a record with load more", async (assert) => {
+        await makeView({
+            type: "kanban",
+            resModel: "partner",
+            serverData,
+            arch: `
+                <kanban limit="1">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div><field name="id"/></div>
+                        </t>
+                    </templates>
+                </kanban>`,
+            groupBy: ["bar"],
+        });
+
+        assert.deepEqual(getCardTexts(target, 0), ["4"]);
+        assert.deepEqual(getCardTexts(target, 1), ["1"]);
+
+        await dragAndDrop(
+            getColumn(target, 1).querySelector(".o_kanban_record"),
+            ".o_kanban_group:nth-child(1)"
+        );
+        assert.deepEqual(getCardTexts(target, 0), ["4", "1"]);
+        assert.deepEqual(getCardTexts(target, 1), ["2"]);
+    });
+
     QUnit.test("can drag and drop a record from one column to the next", async (assert) => {
         await makeView({
             type: "kanban",
@@ -9843,6 +9870,7 @@ QUnit.module("Views", (hooks) => {
             "web_search_read",
             "web_search_read",
             "web_search_read",
+            "read_progress_bar",
         ]);
     });
 
@@ -9897,6 +9925,9 @@ QUnit.module("Views", (hooks) => {
             "web_search_read",
             "web_read_group",
             "web_search_read",
+            "read_progress_bar",
+            "web_read_group",
+            "web_read_group",
         ]);
     });
 
@@ -10102,6 +10133,7 @@ QUnit.module("Views", (hooks) => {
                 "web_read_group",
                 "web_search_read",
                 "web_search_read",
+                "read_progress_bar",
                 "web_search_read",
                 "web_search_read",
             ]);
@@ -10311,10 +10343,20 @@ QUnit.module("Views", (hooks) => {
             '["&",["bar","=",true],["foo","=","yop"]]', // perform read_group only on second column (bar=true)
             "web_search_read",
             // activate filter
-            "web_read_group", // recomputes aggregates
-            '["&",["bar","=",true],["foo","=","gnap"]]', // perform read_group only on second column (bar=true)
+            "read_progress_bar",
+            "web_read_group",
+            "[]",
+            "web_read_group",
+            '["&",["bar","=",true],["foo","=","yop"]]',
+            "web_read_group",
+            '["&",["bar","=",true],["foo","=","gnap"]]',
             "web_search_read",
             // activate another filter (switching)
+            "read_progress_bar",
+            "web_read_group",
+            "[]",
+            "web_read_group",
+            '["&",["bar","=",true],["foo","=","gnap"]]',
             "web_search_read",
         ]);
     });
@@ -10481,6 +10523,7 @@ QUnit.module("Views", (hooks) => {
             "web_search_read",
             "web_search_read",
             "web_search_read",
+            "read_progress_bar",
         ]);
     });
 
@@ -10579,7 +10622,7 @@ QUnit.module("Views", (hooks) => {
 
         assert.deepEqual(getTooltips(target), ["1 blip", "4 yop", "1 gnap", "1 blip"]);
         assert.deepEqual(getCounters(target), ["1", "4"]);
-        assert.verifySteps(["web_search_read"]);
+        assert.verifySteps(["web_search_read", "read_progress_bar"]);
 
         // Add searchdomain to something restricting progressbars' values (records still in filtered group)
         await reload(kanban, { domain: [["qux", "=", 100]], groupBy: ["bar"] });
@@ -10643,6 +10686,9 @@ QUnit.module("Views", (hooks) => {
         assert.verifySteps([
             "web_read_group", // recomputes aggregates
             "web_search_read",
+            "read_progress_bar",
+            "web_read_group",
+            "web_read_group",
         ]);
 
         // Add searchdomain to something restricting progressbars' values (records still in filtered group)
@@ -10989,6 +11035,9 @@ QUnit.module("Views", (hooks) => {
                 "web_search_read",
                 "web_read_group",
                 "web_search_read",
+                "read_progress_bar",
+                "web_read_group",
+                "web_read_group",
                 "get_views",
                 "onchange",
                 "web_save",
@@ -12057,6 +12106,7 @@ QUnit.module("Views", (hooks) => {
                 "web_search_read",
                 "web_search_read",
                 "read_progress_bar",
+                "read_progress_bar",
                 "web_read_group",
                 "web_search_read",
                 "read_progress_bar",
@@ -12153,6 +12203,7 @@ QUnit.module("Views", (hooks) => {
                 "web_search_read",
                 "web_search_read",
                 "read_progress_bar",
+                "read_progress_bar",
                 "web_read_group",
                 "web_search_read",
                 "web_search_read",
@@ -12244,6 +12295,7 @@ QUnit.module("Views", (hooks) => {
                 "web_search_read",
                 "web_search_read",
                 "web_search_read",
+                "read_progress_bar",
                 "web_save",
                 "read_progress_bar",
                 "/web/dataset/resequence",
@@ -12309,7 +12361,7 @@ QUnit.module("Views", (hooks) => {
         );
         assert.containsOnce(target, ".o_kanban_group.o_kanban_group_show .o_kanban_record");
         assert.deepEqual(getCardTexts(target, 1), ["1yop"]);
-        assert.verifySteps(["web_search_read"]);
+        assert.verifySteps(["web_search_read", "read_progress_bar"]);
 
         // Drag out its only record onto the first column
         await dragAndDrop(
@@ -13106,8 +13158,11 @@ QUnit.module("Views", (hooks) => {
                 "web_search_read",
                 "web_search_read",
                 "web_search_read",
+                "read_progress_bar",
                 "web_search_read",
+                "read_progress_bar",
                 "web_search_read",
+                "read_progress_bar",
             ]);
         }
     );
@@ -13190,10 +13245,13 @@ QUnit.module("Views", (hooks) => {
             "web_search_read",
             "web_search_read",
             "web_search_read",
+            "read_progress_bar",
             "web_save",
             "read_progress_bar",
             "web_search_read",
+            "read_progress_bar",
             "web_search_read",
+            "read_progress_bar",
         ]);
     });
 
@@ -14348,7 +14406,7 @@ QUnit.module("Views", (hooks) => {
     });
 
     QUnit.test("scroll on group unfold and progressbar click", async (assert) => {
-        assert.expect(15);
+        assert.expect(18);
 
         await makeView({
             type: "kanban",
@@ -14385,7 +14443,14 @@ QUnit.module("Views", (hooks) => {
         };
 
         await click(getProgressBars(target, 0)[0]);
-        assert.verifySteps(["web_read_group", "web_search_read", "scrolled"]);
+        assert.verifySteps([
+            "web_read_group",
+            "web_search_read",
+            "read_progress_bar",
+            "web_read_group",
+            "web_read_group",
+            "scrolled",
+        ]);
 
         const column1 = getColumn(target, 1);
         assert.hasClass(column1, "o_column_folded");

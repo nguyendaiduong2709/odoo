@@ -43,7 +43,7 @@ class PurchaseOrderLine(models.Model):
             moves = moves.filtered(lambda r: fields.Date.context_today(r, r.date) <= self._context['accrual_entry_date'])
         return moves
 
-    @api.depends('move_ids.state', 'move_ids.product_uom_qty', 'move_ids.product_uom')
+    @api.depends('move_ids.state', 'move_ids.product_uom', 'move_ids.quantity')
     def _compute_qty_received(self):
         from_stock_lines = self.filtered(lambda order_line: order_line.qty_received_method == 'stock_moves')
         super(PurchaseOrderLine, self - from_stock_lines)._compute_qty_received()
@@ -92,7 +92,8 @@ class PurchaseOrderLine(models.Model):
         if values.get('date_planned'):
             new_date = fields.Datetime.to_datetime(values['date_planned'])
             self.filtered(lambda l: not l.display_type)._update_move_date_deadline(new_date)
-        lines = self.filtered(lambda l: l.order_id.state == 'purchase')
+        lines = self.filtered(lambda l: l.order_id.state == 'purchase'
+                                        and not l.display_type)
 
         if 'product_packaging_id' in values:
             self.move_ids.filtered(
