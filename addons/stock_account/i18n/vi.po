@@ -390,7 +390,7 @@ msgstr "Nhập về"
 #. module: stock_account
 #: model:ir.model,name:stock_account.model_stock_location
 msgid "Inventory Locations"
-msgstr "Địa điểm Kho"
+msgstr "Địa điểm kiểm kho"
 
 #. module: stock_account
 #. odoo-python
@@ -825,7 +825,7 @@ msgid ""
 "be use to correct a specific transfer."
 msgstr ""
 "Giá trị của lớp định giá tồn kho không thể là số âm. Chi phí nhập kho có thể"
-" được sử dụng để điều chỉnh một điều chuyển cụ thể."
+" được sử dụng để điều chỉnh một lệnh chuyển hàng cụ thể."
 
 #. module: stock_account
 #: model_terms:ir.actions.act_window,help:stock_account.stock_valuation_layer_action
@@ -859,7 +859,7 @@ msgstr "Tổng giá trị"
 #. module: stock_account
 #: model:ir.model,name:stock_account.model_stock_picking
 msgid "Transfer"
-msgstr "Điều chuyển"
+msgstr "Lệnh chuyển hàng"
 
 #. module: stock_account
 #: model:ir.model.fields,help:stock_account.field_stock_move__to_refund
@@ -901,9 +901,9 @@ msgid ""
 "internal locations."
 msgstr ""
 "Được sử dụng cho định giá tồn kho theo thời gian thực. Khi được thiết lập "
-"trên một địa điểm ảo (không phải loại nội bộ), tài khoản này sẽ được sử dụng"
+"trên một địa điểm ảo (không phải kiểu nội bộ), tài khoản này sẽ được sử dụng"
 " để giữ giá trị của những sản phẩm được di chuyển từ một địa điểm nội bộ sang "
-"vị trí này, thay cho Tài khoản xuất kho được thiết lập trên sản phẩm. Việc "
+"địa điểm này, thay cho Tài khoản xuất kho được thiết lập trên sản phẩm. Việc "
 "này không ảnh hưởng tới địa điểm nội bộ."
 
 #. module: stock_account
@@ -916,7 +916,7 @@ msgid ""
 "internal locations."
 msgstr ""
 "Được sử dụng cho định giá tồn kho theo thời gian thực. Khi được thiết lập "
-"trên một địa điểm ảo (không phải loại nội bộ), tài khoản này sẽ được sử dụng"
+"trên một địa điểm ảo (không phải kiểu nội bộ), tài khoản này sẽ được sử dụng"
 " để giữ giá trị của những sản phẩm được di chuyển ra khỏi địa điểm này và vào "
 "một địa điểm nội bộ, thay cho Tài khoản xuất kho được thiết lập trên sản phẩm."
 " Việc này không ảnh hưởng tới địa điểm nội bộ."
@@ -997,8 +997,8 @@ msgid ""
 "                It can also directly be set on each product."
 msgstr ""
 "Khi thực hiện định giá hàng tồn kho tự động, các phát sinh kế toán đối ứng cho tất cả các dịch chuyển kho xuất ra sẽ được ghi nhận trong tài khoản này,\n"
-"                trừ khi có một tài khoản định giá cụ thể được đặt trên địa điểm đích. Đây là giá trị mặc định cho tất cả các sản phẩm trong danh mục này.\n"
-"                Nó cũng có thể được đặt trực tiếp trên mỗi sản phẩm."
+"                trừ khi có một tài khoản định giá cụ thể được thiết lập trên địa điểm đích. Đây là giá trị mặc định cho tất cả các sản phẩm trong nhóm này.\n"
+"                Tài khoản này cũng có thể được thiết lập trực tiếp trên mỗi sản phẩm."
 
 #. module: stock_account
 #: model:ir.model.fields,help:stock_account.field_product_category__property_stock_journal
