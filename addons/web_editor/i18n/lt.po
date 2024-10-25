@@ -15,6 +15,7 @@
 # Linas Versada <linaskrisiukenas@gmail.com>, 2022
 # digitouch UAB <digitouchagencyeur@gmail.com>, 2022
 # Martin Trigaux, 2023
+# Aurelija Vitkauskiene, 2024
 # Ramunė ViaLaurea <ramune.vialaurea@gmail.com>, 2024
 # 
 msgid ""
@@ -1778,7 +1779,7 @@ msgstr "Sąrašas"
 #: code:addons/web_editor/static/src/components/media_dialog/file_selector.xml:0
 #, python-format
 msgid "Load more..."
-msgstr ""
+msgstr "Rodyti daugiau...."
 
 #. module: web_editor
 #. odoo-javascript
@@ -2720,7 +2721,7 @@ msgstr "Stilius"
 #: code:addons/web_editor/static/src/components/media_dialog/video_selector.xml:0
 #, python-format
 msgid "Suggestions"
-msgstr ""
+msgstr "Siūlymai"
 
 #. module: web_editor
 #. odoo-javascript

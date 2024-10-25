@@ -1535,6 +1535,20 @@ msgstr ""
 "khoản này để làm việc đó."
 
 #. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+#, python-format
+msgid "Account %s is of payable type, but is used in a sale operation."
+msgstr ""
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+#, python-format
+msgid "Account %s is of receivable type, but is used in a purchase operation."
+msgstr ""
+
+#. module: account
 #: model:ir.model,name:account.model_account_cash_rounding
 msgid "Account Cash Rounding"
 msgstr "Làm tròn Tiền mặt"
@@ -7677,7 +7691,7 @@ msgstr "Tài khoản doanh thu trên mẫu sản phẩm"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_journal_form
 msgid "Incoming Payments"
-msgstr "Thu tiền"
+msgstr "Phiếu thu"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_res_config_settings__account_journal_payment_debit_account_id
@@ -10504,7 +10518,7 @@ msgstr "Phương thức thanh toán đi"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_journal_form
 msgid "Outgoing Payments"
-msgstr "Thanh toán trước"
+msgstr "Phiếu chi"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_res_config_settings__account_journal_payment_credit_account_id
@@ -15264,6 +15278,8 @@ msgstr ""
 msgid ""
 "This journal is associated with a payment method. You cannot archive it"
 msgstr ""
+"Sổ nhật ký được liên kết với một phương thức thanh toán. Bạn không thể lưu "
+"trữ nó"
 
 #. module: account
 #. odoo-python
@@ -15619,7 +15635,7 @@ msgstr "Tham số loại giao dịch"
 #: code:addons/account/wizard/account_automatic_entry_wizard.py:0
 #, python-format
 msgid "Transfer"
-msgstr "Điều chuyển"
+msgstr "Luân chuyển"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_automatic_entry_wizard_form

@@ -816,8 +816,8 @@ msgid ""
 msgstr ""
 "Thời gian sản xuất trung bình tính bằng ngày để sản xuất sản phẩm này. Trong"
 " trường hợp ĐMNVL đa cấp, sẽ cộng thêm thời gian sản xuất các nguyên liệu. "
-"Trong trường hợp sản phẩm được ký hợp đồng phụ, thời gian này có thể được sử"
-" dụng để xác định ngày mà các nguyên liệu sẽ được gửi cho nhà thầu phụ."
+"Trong trường hợp sản phẩm đi gia công, thời gian này có thể được sử"
+" dụng để xác định ngày mà các nguyên liệu sẽ được gửi cho đơn vị gia công."
 
 #. module: mrp
 #: model:ir.model,name:mrp.model_report_mrp_report_bom_structure
@@ -2148,7 +2148,7 @@ msgid ""
 "In a context with a single Warehouse, this includes goods stored in the Stock Location of this Warehouse, or any of its children.\n"
 "Otherwise, this includes goods stored in any Stock Location with 'internal' type."
 msgstr ""
-"Số lượng dự báo (được tính bằng Số lượng hiện có - Số lượng xuất + Số lượng nhập)\n"
+"Số lượng dự báo (được tính bằng Số lượng hiện có - Số lượng sắp xuất + Số lượng sắp nhập)\n"
 "Trong ngữ cảnh chỉ có một địa điểm kho, số lượng bao gồm hàng hóa được lưu trữ trong địa điểm này, hoặc bất kỳ địa điểm con nào.\n"
 "Trong ngữ cảnh chỉ có một kho hàng, số lượng bao gồm hàng hóa được trữ trong địa điểm kho của kho hàng, hoặc bất kỳ địa điểm con nào.\n"
 "Nếu không, số lượng bao gồm hàng hoá được lưu trữ trong bất kỳ địa điểm kho nào có kiểu 'nội bộ'."
@@ -2438,7 +2438,7 @@ msgstr "Sản xuất ngay lập tức?"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.exception_on_mo
 msgid "Impacted Transfer(s):"
-msgstr "(Các) điều chuyển bị ảnh hưởng"
+msgstr "(Các) lệnh chuyển hàng bị ảnh hưởng"
 
 #. module: mrp
 #. odoo-python
@@ -3823,8 +3823,8 @@ msgid ""
 "Produce : Move the components to the production location        directly and start the manufacturing process.\n"
 "Pick / Produce : Unload        the components from the Stock to Input location first, and then        transfer it to the Production location."
 msgstr ""
-"Sản xuất : Chuyển các nguyên liệu đến thẳng địa điểm sản xuất và bắt đầu quy trình sản xuất.\n"
-"Lấy hàng/Sản xuất : Đầu tiên đưa các nguyên liệu từ Tồn kho đến địa điểm đầu vào, sau đó chuyển nó đến địa điểm sản xuất."
+"Sản xuất: Chuyển các nguyên liệu đến thẳng địa điểm sản xuất và bắt đầu quy trình sản xuất.\n"
+"Lấy hàng/Sản xuất: Đầu tiên đưa các nguyên liệu từ Tồn kho đến địa điểm đầu vào, sau đó chuyển nó đến địa điểm sản xuất."
 
 #. module: mrp
 #: model:res.groups,name:mrp.group_mrp_byproducts
@@ -4878,7 +4878,7 @@ msgstr "ĐMNVL thứ cấp"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.res_config_settings_view_form
 msgid "Subcontract the production of some products"
-msgstr "Cho phép thiết lập thuê gia công trong qui trình sản xuất sản phẩm"
+msgstr "Cho phép thiết lập thuê gia công trong quy trình sản xuất sản phẩm"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_res_config_settings__module_mrp_subcontracting
@@ -5432,7 +5432,7 @@ msgstr "Dịch chuyển"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
 msgid "Transfers"
-msgstr "Điều chuyển"
+msgstr "Lệnh chuyển hàng"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_document__type
@@ -6463,7 +6463,7 @@ msgstr "thời lượng dự kiến"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.stock_warn_insufficient_qty_unbuild_form_view
 msgid "from location"
-msgstr "từ vị trí"
+msgstr "từ địa điểm"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.view_assign_serial_numbers_production

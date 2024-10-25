@@ -280,6 +280,7 @@ class AssetsBundle(object):
         # avoid to invalidate cache if it's already empty (mainly useful for test)
 
         if attachments:
+            _logger.info('Deleting ir.attachment %s (from bundle %s)', attachments.ids, self.name)
             self._unlink_attachments(attachments)
             # force bundle invalidation on other workers
             self.env['ir.qweb'].clear_caches()
@@ -314,11 +315,16 @@ class AssetsBundle(object):
                FROM ir_attachment
               WHERE create_uid = %s
                 AND url like %s
+                AND res_model = 'ir.ui.view'
+                AND res_id = 0
+                AND public = true
            GROUP BY name
            ORDER BY name
          """, [SUPERUSER_ID, url_pattern])
 
         attachment_ids = [r[0] for r in self.env.cr.fetchall()]
+        if not attachment_ids:
+            _logger.info('Failed to find attachment for assets %s', url_pattern)
         return self.env['ir.attachment'].sudo().browse(attachment_ids)
 
     def add_post_rollback(self):

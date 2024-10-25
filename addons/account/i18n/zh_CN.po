@@ -1512,6 +1512,20 @@ msgid ""
 msgstr "科目%s不允许对帐。首先更改此科目的配置以允许它。"
 
 #. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+#, python-format
+msgid "Account %s is of payable type, but is used in a sale operation."
+msgstr ""
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+#, python-format
+msgid "Account %s is of receivable type, but is used in a purchase operation."
+msgstr ""
+
+#. module: account
 #: model:ir.model,name:account.model_account_cash_rounding
 msgid "Account Cash Rounding"
 msgstr "账户现金舍入"
@@ -9433,7 +9447,7 @@ msgstr "从不"
 #: code:addons/account/models/account_tax.py:0
 #, python-format
 msgid "Nested group of taxes are not allowed."
-msgstr ""
+msgstr "税项组别不可以是嵌套结构。"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__new_journal_name
@@ -14732,7 +14746,7 @@ msgstr "这个日记账已经包含明细账，因此您不能更改它所属的
 #, python-format
 msgid ""
 "This journal is associated with a payment method. You cannot archive it"
-msgstr ""
+msgstr "此日记账与付款方式相关联。无法存档"
 
 #. module: account
 #. odoo-python

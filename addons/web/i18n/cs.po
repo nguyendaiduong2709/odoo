@@ -13,7 +13,6 @@
 # Michal Veselý <michal@veselyberanek.net>, 2022
 # Martin Trigaux, 2022
 # SlavekB <slavek.banko@axis.cz>, 2023
-# Jiří Podhorecký <jirka.p@volny.cz>, 2023
 # karolína schusterová <karolina.schusterova@vdp.sk>, 2023
 # Jakub Smolka, 2023
 # Tomáš Píšek, 2023
@@ -21,6 +20,7 @@
 # Katerina Horylova, 2024
 # Aleš Fiala <f.ales1@seznam.cz>, 2024
 # Wil Odoo, 2024
+# Jiří Podhorecký <jirka.p@volny.cz>, 2024
 # Tereza Mokrá, 2024
 # 
 msgid ""
@@ -1969,7 +1969,7 @@ msgstr "Zrušit"
 #: code:addons/web/static/src/views/form/form_status_indicator/form_status_indicator.xml:0
 #, python-format
 msgid "Discard changes"
-msgstr ""
+msgstr "Neukládat změny a pokračovat"
 
 #. module: web
 #. odoo-javascript
@@ -2742,7 +2742,7 @@ msgstr "Celé číslo"
 #: code:addons/web/static/src/views/fields/properties/property_value.xml:0
 #, python-format
 msgid "Internal link"
-msgstr ""
+msgstr "Interní odkaz"
 
 #. module: web
 #. odoo-javascript
@@ -3704,7 +3704,7 @@ msgstr ""
 #: code:addons/web/static/src/views/form/form_error_dialog/form_error_dialog.xml:0
 #, python-format
 msgid "Oh snap!"
-msgstr ""
+msgstr "Pozor!"
 
 #. module: web
 #. odoo-javascript
@@ -5111,14 +5111,14 @@ msgstr "Stav"
 #: code:addons/web/static/src/webclient/settings_form_view/settings_confirmation_dialog.xml:0
 #, python-format
 msgid "Stay Here"
-msgstr ""
+msgstr "Vrátit se zpět k úpravám"
 
 #. module: web
 #. odoo-javascript
 #: code:addons/web/static/src/views/form/form_error_dialog/form_error_dialog.xml:0
 #, python-format
 msgid "Stay here"
-msgstr ""
+msgstr "Vrátit se zpět k úpravám"
 
 #. module: web
 #. odoo-javascript

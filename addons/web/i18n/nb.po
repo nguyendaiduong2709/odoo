@@ -901,7 +901,7 @@ msgstr ""
 #: code:addons/web/static/src/views/list/list_controller.js:0
 #, python-format
 msgid "Are you sure you want to delete these records?"
-msgstr ""
+msgstr "Er du sikker på at du vil slette disse postene?"
 
 #. module: web
 #. odoo-javascript
@@ -1433,7 +1433,7 @@ msgstr "Kontekst:"
 #: code:addons/web/static/src/views/list/list_controller.xml:0
 #, python-format
 msgid "Control panel buttons"
-msgstr ""
+msgstr "Kontrolpanel knapper"
 
 #. module: web
 #. odoo-javascript
@@ -2340,7 +2340,7 @@ msgstr "Usann"
 #: code:addons/web/static/src/views/fields/boolean_favorite/boolean_favorite_field.js:0
 #, python-format
 msgid "Favorite"
-msgstr ""
+msgstr "Favoritt"
 
 #. module: web
 #. odoo-javascript
@@ -3856,7 +3856,7 @@ msgstr ""
 #: code:addons/web/static/src/views/fields/pdf_viewer/pdf_viewer_field.xml:0
 #, python-format
 msgid "PDF file"
-msgstr ""
+msgstr "PDF fil"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.external_layout_striped

@@ -7,6 +7,7 @@
 # Martin Trigaux, 2023
 # Wil Odoo, 2024
 # Roman Dereka <rode@odoo.com>, 2024
+# Vitalii Fedko, 2024
 # Alina Lisnenko <alina.lisnenko@erp.co.ua>, 2024
 # 
 msgid ""
@@ -1536,6 +1537,20 @@ msgid ""
 msgstr ""
 "Рахунок %s не дозоляє узгодження. Спершу змініть налаштування цього рахунку,"
 " щоб дозволити узгодження."
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+#, python-format
+msgid "Account %s is of payable type, but is used in a sale operation."
+msgstr ""
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_move_line.py:0
+#, python-format
+msgid "Account %s is of receivable type, but is used in a purchase operation."
+msgstr ""
 
 #. module: account
 #: model:ir.model,name:account.model_account_cash_rounding
@@ -15287,6 +15302,7 @@ msgstr ""
 msgid ""
 "This journal is associated with a payment method. You cannot archive it"
 msgstr ""
+"Цей журнал пов'язаний зі способом оплати. Ви не можете його архівувати"
 
 #. module: account
 #. odoo-python
@@ -16806,6 +16822,8 @@ msgid ""
 "You cannot create a fiscal position with a country outside of the selected "
 "country group."
 msgstr ""
+"Ви не можете створити схему оподаткування з країною за межами вибраної групи"
+" країн."
 
 #. module: account
 #: code:addons/account/models/partner.py:0

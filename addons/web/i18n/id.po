@@ -4,7 +4,6 @@
 # 
 # Translators:
 # Ryanto The <ry.the77@gmail.com>, 2022
-# Wahyu Setiawan <wahyusetiaaa@gmail.com>, 2022
 # William Surya Permana <zarambie_game@yahoo.com>, 2022
 # Aldo Bagaskara, 2023
 # Martin Trigaux, 2023
@@ -4896,7 +4895,7 @@ msgstr "Pilih semua"
 #: code:addons/web/static/src/legacy/xml/base.xml:0
 #, python-format
 msgid "Select all records matching the search"
-msgstr ""
+msgstr "Pilih semua rekaman yang cocok dengan pencarian"
 
 #. module: web
 #. openerp-web
@@ -6228,7 +6227,7 @@ msgstr "Sekitar satu jam yang lalu"
 #: code:addons/web/static/src/core/domain_selector/domain_selector_branch_operator.xml:0
 #, python-format
 msgid "all"
-msgstr "seperti bukan orang"
+msgstr "semua"
 
 #. module: web
 #. odoo-javascript

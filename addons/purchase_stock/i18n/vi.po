@@ -295,7 +295,7 @@ msgid ""
 "type or cancel the request for quotation."
 msgstr ""
 "Đối với sản phẩm %s, kho hàng của kiểu hoạt động (%s) không tương thích với "
-"vị trí (%s) của quy tắc tái đặt hàng (%s). Hãy thay đổi kiểu hoạt động hoặc "
+"địa điểm (%s) của quy tắc tái cung ứng (%s). Hãy thay đổi kiểu hoạt động hoặc "
 "huỷ yêu cầu báo giá."
 
 #. module: purchase_stock
@@ -807,7 +807,7 @@ msgstr "Tổng số lượng"
 #. module: purchase_stock
 #: model:ir.model,name:purchase_stock.model_stock_picking
 msgid "Transfer"
-msgstr "Điều chuyển"
+msgstr "Lệnh chuyển hàng"
 
 #. module: purchase_stock
 #. odoo-python
