@@ -3175,7 +3175,7 @@ msgstr "vd: LinkedIn"
 #. module: hr_recruitment
 #: model_terms:ir.ui.view,arch_db:hr_recruitment.hr_job_simple_form
 msgid "e.g. Sales Manager"
-msgstr "vd: Quản lý Bán hàng"
+msgstr "vd: Quản lý bán hàng"
 
 #. module: hr_recruitment
 #: model_terms:ir.ui.view,arch_db:hr_recruitment.hr_applicant_view_form

@@ -4720,8 +4720,9 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"Konwersja zapytań biznesowych, które przez pomyłkę trafiły do lejka Helpdesk,\n"
-"lub wygenerować bilet z zapytania biznesowego"
+"Konwertuj zapytania biznesowe, które przez pomyłkę trafiły do pipeline'u Helpdesku,\n"
+"lub wygeneruj zgłoszenie z zapytania biznesowego\n"
+"        "
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_holidays_attendance
@@ -4731,7 +4732,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Konwersja dodatkowych godzin pracownika na przydział urlopu."
+"Konwertuj nadgodziny pracownika na dni urlopowe.\n"
+"     "
 
 #. module: base
 #: model:ir.module.module,description:base.module_helpdesk_account
@@ -34060,6 +34062,15 @@ msgstr "Akcja \"%s\" nie może być wybrana jako akcja główna."
 msgid "The \"App Switcher\" action cannot be selected as home action."
 msgstr ""
 "Akcja \"Przełącznik aplikacji\" nie może zostać wybrana jako akcja domowa."
+
+#. module: base
+#. odoo-python
+#: code:addons/base/models/res_users.py:0
+#, python-format
+msgid ""
+"The action \"%s\" cannot be set as the home action because it requires a "
+"record to be selected beforehand."
+msgstr ""
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_country__code
